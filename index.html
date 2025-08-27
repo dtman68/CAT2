@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>§Úªº¶À¿ßÃdª«</title>
-    <!-- ³]¸m <base> ¼ĞÅÒ¡A½T«O©Ò¦³¬Û¹ï¸ô®|³£¯à¥¿½T¸ÑªR -->
+    <title>æˆ‘çš„é»ƒè²“å¯µç‰©</title>
+    <!-- è¨­ç½® <base> æ¨™ç±¤ï¼Œç¢ºä¿æ‰€æœ‰ç›¸å°è·¯å¾‘éƒ½èƒ½æ­£ç¢ºè§£æ -->
     <base href="./">
-    <!-- µù¥U manifest.json ÀÉ®×¡A¥Î©ó PWA ¥\¯à -->
+    <!-- è¨»å†Š manifest.json æª”æ¡ˆï¼Œç”¨æ–¼ PWA åŠŸèƒ½ -->
     <link rel="manifest" href="manifest.json">
-    <!-- ¸ü¤J Tailwind CSS ®Ø¬[¡A¥Î©ó§Ö³t«Ø¥ß¬üÆ[ªº¤¶­± -->
+    <!-- è¼‰å…¥ Tailwind CSS æ¡†æ¶ï¼Œç”¨æ–¼å¿«é€Ÿå»ºç«‹ç¾è§€çš„ä»‹é¢ -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* ¸ü¤J Inter ¦rÅé¥HÀò±o§ó¦nªº±Æª©®ÄªG */
+        /* è¼‰å…¥ Inter å­—é«”ä»¥ç²å¾—æ›´å¥½çš„æ’ç‰ˆæ•ˆæœ */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         body {
             font-family: 'Inter', sans-serif;
@@ -19,26 +19,26 @@
     </style>
 </head>
 <body class="bg-yellow-50 min-h-screen flex items-center justify-center p-4">
-    <!-- À³¥Îµ{¦¡¥D®e¾¹ -->
+    <!-- æ‡‰ç”¨ç¨‹å¼ä¸»å®¹å™¨ -->
     <div class="bg-white rounded-3xl shadow-xl p-8 max-w-sm w-full border-4 border-yellow-300 transform transition-transform duration-300 hover:scale-105">
-        <h1 class="text-3xl font-bold text-center text-gray-800 mb-4">§Úªº¶À¿ßÃdª«</h1>
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-4">æˆ‘çš„é»ƒè²“å¯µç‰©</h1>
         
-        <!-- ¿ß«}Åã¥Ü°Ï -->
+        <!-- è²“å’ªé¡¯ç¤ºå€ -->
         <div id="catDisplay" class="text-9xl text-center my-6 transition-all duration-500">
-            ??
+            ğŸˆ
         </div>
         
-        <!-- ª¬ºA°T®§Åã¥Ü°Ï -->
+        <!-- ç‹€æ…‹è¨Šæ¯é¡¯ç¤ºå€ -->
         <div id="statusMessage" class="text-center text-gray-600 mb-6 h-6 font-medium">
-            ³o¬O¤@°¦§Ö¼Öªº¶À¿ß¡I
+            é€™æ˜¯ä¸€éš»å¿«æ¨‚çš„é»ƒè²“ï¼
         </div>
 
-        <!-- ¿ß«}Äİ©Êª¬ºA±ø -->
+        <!-- è²“å’ªå±¬æ€§ç‹€æ…‹æ¢ -->
         <div class="space-y-4">
-            <!-- ¹¡¨¬«× -->
+            <!-- é£½è¶³åº¦ -->
             <div>
                 <div class="flex justify-between items-center text-sm font-semibold text-gray-700">
-                    <span>¹¡¨¬«×</span>
+                    <span>é£½è¶³åº¦</span>
                     <span id="fullnessText">100%</span>
                 </div>
                 <div class="w-full bg-gray-200 rounded-full h-2.5">
@@ -46,10 +46,10 @@
                 </div>
             </div>
 
-            <!-- §Ö¼Ö«× -->
+            <!-- å¿«æ¨‚åº¦ -->
             <div>
                 <div class="flex justify-between items-center text-sm font-semibold text-gray-700">
-                    <span>§Ö¼Ö«×</span>
+                    <span>å¿«æ¨‚åº¦</span>
                     <span id="happinessText">100%</span>
                 </div>
                 <div class="w-full bg-gray-200 rounded-full h-2.5">
@@ -57,10 +57,10 @@
                 </div>
             </div>
 
-            <!-- ¥ğ®§«× -->
+            <!-- ä¼‘æ¯åº¦ -->
             <div>
                 <div class="flex justify-between items-center text-sm font-semibold text-gray-700">
-                    <span>¥ğ®§«×</span>
+                    <span>ä¼‘æ¯åº¦</span>
                     <span id="restfulnessText">100%</span>
                 </div>
                 <div class="w-full bg-gray-200 rounded-full h-2.5">
@@ -69,28 +69,28 @@
             </div>
         </div>
 
-        <!-- ¤¬°Ê«ö¶s°Ï -->
+        <!-- äº’å‹•æŒ‰éˆ•å€ -->
         <div class="grid grid-cols-2 gap-4 mt-8">
             <button id="feedBtn" class="bg-green-500 text-white py-2 px-4 rounded-full text-lg font-bold shadow-md hover:bg-green-600 transform hover:scale-105 transition-all duration-200">
-                Áı­¹
+                é¤µé£Ÿ
             </button>
             <button id="playBtn" class="bg-blue-500 text-white py-2 px-4 rounded-full text-lg font-bold shadow-md hover:bg-blue-600 transform hover:scale-105 transition-all duration-200">
-                ª±­A
+                ç©è€
             </button>
             <button id="sleepBtn" class="bg-purple-500 text-white py-2 px-4 rounded-full text-lg font-bold shadow-md hover:bg-purple-600 transform hover:scale-105 transition-all duration-200">
-                ¥ğ®§
+                ä¼‘æ¯
             </button>
             <button id="groomBtn" class="bg-pink-500 text-white py-2 px-4 rounded-full text-lg font-bold shadow-md hover:bg-pink-600 transform hover:scale-105 transition-all duration-200">
-                ¨ê¤ò
+                åˆ·æ¯›
             </button>
             <button id="trainBtn" class="bg-orange-500 text-white py-2 px-4 rounded-full text-lg font-bold shadow-md hover:bg-orange-600 transform hover:scale-105 transition-all duration-200">
-                °V½m
+                è¨“ç·´
             </button>
         </div>
     </div>
 
     <script>
-        // ¨ú±o©Ò¦³ HTML ¤¸¯À°Ñ¦Ò
+        // å–å¾—æ‰€æœ‰ HTML å…ƒç´ åƒè€ƒ
         const catDisplay = document.getElementById('catDisplay');
         const statusMessage = document.getElementById('statusMessage');
         const fullnessBar = document.getElementById('fullnessBar');
@@ -105,22 +105,22 @@
         const groomBtn = document.getElementById('groomBtn');
         const trainBtn = document.getElementById('trainBtn');
 
-        // ¿ß«}ªºªì©lÄİ©Ê­È
+        // è²“å’ªçš„åˆå§‹å±¬æ€§å€¼
         let stats = {
             fullness: 100,
             happiness: 100,
             restfulness: 100,
         };
 
-        // ®Ú¾ÚÄİ©Ê­È§ó·s UI ¤¶­±
+        // æ ¹æ“šå±¬æ€§å€¼æ›´æ–° UI ä»‹é¢
         function updateUI() {
-            // ½T«OÄİ©Ê­È¤¶©ó 0 ¨ì 100 ¤§¶¡
+            // ç¢ºä¿å±¬æ€§å€¼ä»‹æ–¼ 0 åˆ° 100 ä¹‹é–“
             for (let key in stats) {
                 if (stats[key] > 100) stats[key] = 100;
                 if (stats[key] < 0) stats[key] = 0;
             }
 
-            // §ó·sÄİ©Ê±øªº¼e«×©M¤å¦rÅã¥Ü
+            // æ›´æ–°å±¬æ€§æ¢çš„å¯¬åº¦å’Œæ–‡å­—é¡¯ç¤º
             fullnessBar.style.width = stats.fullness + '%';
             happinessBar.style.width = stats.happiness + '%';
             restfulnessBar.style.width = stats.restfulness + '%';
@@ -129,31 +129,31 @@
             happinessText.textContent = stats.happiness + '%';
             restfulnessText.textContent = stats.restfulness + '%';
 
-            // ®Ú¾ÚÄİ©Ê­È§ïÅÜª¬ºA±øªºÃC¦â
+            // æ ¹æ“šå±¬æ€§å€¼æ”¹è®Šç‹€æ…‹æ¢çš„é¡è‰²
             fullnessBar.className = `h-2.5 rounded-full transition-all duration-300 ${stats.fullness > 50 ? 'bg-green-500' : stats.fullness > 20 ? 'bg-orange-500' : 'bg-red-500'}`;
             happinessBar.className = `h-2.5 rounded-full transition-all duration-300 ${stats.happiness > 50 ? 'bg-blue-500' : stats.happiness > 20 ? 'bg-orange-500' : 'bg-red-500'}`;
             restfulnessBar.className = `h-2.5 rounded-full transition-all duration-300 ${stats.restfulness > 50 ? 'bg-purple-500' : stats.restfulness > 20 ? 'bg-orange-500' : 'bg-red-500'}`;
 
-            // ®Ú¾ÚÄİ©Ê­È§ó·s¿ß«}ªºªí±¡©Mª¬ºA°T®§
+            // æ ¹æ“šå±¬æ€§å€¼æ›´æ–°è²“å’ªçš„è¡¨æƒ…å’Œç‹€æ…‹è¨Šæ¯
             if (stats.restfulness < 20) {
-                catDisplay.textContent = '??';
-                statusMessage.textContent = '¿ß«}²Ö¤F¡A»İ­n¥ğ®§¡C';
+                catDisplay.textContent = 'ğŸ’¤';
+                statusMessage.textContent = 'è²“å’ªç´¯äº†ï¼Œéœ€è¦ä¼‘æ¯ã€‚';
             } else if (stats.fullness < 20) {
-                catDisplay.textContent = '?';
-                statusMessage.textContent = '¿ß«}¾j¤F¡A§ÖÁı¨e¡I';
+                catDisplay.textContent = 'ğŸ¥º';
+                statusMessage.textContent = 'è²“å’ªé¤“äº†ï¼Œå¿«é¤µç‰ ï¼';
             } else if (stats.happiness < 20) {
-                catDisplay.textContent = '??';
-                statusMessage.textContent = '¿ß«}¤£¶}¤ß¡A»İ­nª±­A¡C';
+                catDisplay.textContent = 'ğŸ˜ ';
+                statusMessage.textContent = 'è²“å’ªä¸é–‹å¿ƒï¼Œéœ€è¦ç©è€ã€‚';
             } else if (stats.happiness > 80 && stats.fullness > 80) {
-                catDisplay.textContent = '??';
-                statusMessage.textContent = '¿ß«}«D±`º¡¨¬¡A«Ü°ª¿³¡I';
+                catDisplay.textContent = 'ğŸ’–';
+                statusMessage.textContent = 'è²“å’ªéå¸¸æ»¿è¶³ï¼Œå¾ˆé«˜èˆˆï¼';
             } else {
-                catDisplay.textContent = '??';
-                statusMessage.textContent = '³o¬O¤@°¦´¶³qªº¶À¿ß¡C';
+                catDisplay.textContent = 'ğŸˆ';
+                statusMessage.textContent = 'é€™æ˜¯ä¸€éš»æ™®é€šçš„é»ƒè²“ã€‚';
             }
         }
 
-        // ©w®É´î¤Ö¿ß«}ªºÄİ©Ê­È
+        // å®šæ™‚æ¸›å°‘è²“å’ªçš„å±¬æ€§å€¼
         function decreaseStats() {
             stats.fullness -= 1;
             stats.happiness -= 1;
@@ -161,59 +161,60 @@
             updateUI();
         }
 
-        // Áı­¹«ö¶s¨Æ¥ó
+        // é¤µé£ŸæŒ‰éˆ•äº‹ä»¶
         feedBtn.addEventListener('click', () => {
             stats.fullness += 20;
             stats.happiness += 5;
             updateUI();
-            statusMessage.textContent = '§AÁı¤F¿ß«}¡A¨e¬İ°_¨Ó¹¡¨¬¤F¡I';
+            statusMessage.textContent = 'ä½ é¤µäº†è²“å’ªï¼Œç‰ çœ‹èµ·ä¾†é£½è¶³äº†ï¼';
         });
 
-        // ª±­A«ö¶s¨Æ¥ó
+        // ç©è€æŒ‰éˆ•äº‹ä»¶
         playBtn.addEventListener('click', () => {
             stats.happiness += 20;
             stats.restfulness -= 10;
             stats.fullness -= 5;
             updateUI();
-            statusMessage.textContent = '§A©M¿ß«}ª±­A¡A¨e«Ü°ª¿³¡I';
+            statusMessage.textContent = 'ä½ å’Œè²“å’ªç©è€ï¼Œç‰ å¾ˆé«˜èˆˆï¼';
         });
 
-        // ¥ğ®§«ö¶s¨Æ¥ó
+        // ä¼‘æ¯æŒ‰éˆ•äº‹ä»¶
         sleepBtn.addEventListener('click', () => {
             stats.restfulness += 30;
             stats.happiness -= 10;
             updateUI();
-            statusMessage.textContent = '¿ß«}ºÎÄ±¤F¡A¨e±N·|«Ü©ñÃP¡C';
+            statusMessage.textContent = 'è²“å’ªç¡è¦ºäº†ï¼Œç‰ å°‡æœƒå¾ˆæ”¾é¬†ã€‚';
         });
 
-        // ¨ê¤ò«ö¶s¨Æ¥ó
+        // åˆ·æ¯›æŒ‰éˆ•äº‹ä»¶
         groomBtn.addEventListener('click', () => {
             stats.happiness += 15;
             stats.restfulness += 5;
             updateUI();
-            statusMessage.textContent = '§A´À¿ß«}¨ê¤ò¡A¨eµÎªA¦aµo¥X©IÂPÁn¡C';
+            statusMessage.textContent = 'ä½ æ›¿è²“å’ªåˆ·æ¯›ï¼Œç‰ èˆ’æœåœ°ç™¼å‡ºå‘¼åš•è²ã€‚';
         });
 
-        // °V½m«ö¶s¨Æ¥ó
+        // è¨“ç·´æŒ‰éˆ•äº‹ä»¶
         trainBtn.addEventListener('click', () => {
             stats.happiness += 10;
             stats.restfulness -= 15;
             stats.fullness -= 5;
             updateUI();
-            statusMessage.textContent = '§A©M¿ß«}¤@°_°V½m¡A¨e¾Ç·|¤F¤@­Ó·s§âÀ¸¡I';
+            statusMessage.textContent = 'ä½ å’Œè²“å’ªä¸€èµ·è¨“ç·´ï¼Œç‰ å­¸æœƒäº†ä¸€å€‹æ–°æŠŠæˆ²ï¼';
         });
 
-        // ¨C 2 ¬í¦Û°Ê´î¤ÖÄİ©Ê­È
+        // æ¯ 2 ç§’è‡ªå‹•æ¸›å°‘å±¬æ€§å€¼
         setInterval(decreaseStats, 2000);
 
-        // À³¥Îµ{¦¡¸ü¤J®É°õ¦æªì©l¤Æ
+        // æ‡‰ç”¨ç¨‹å¼è¼‰å…¥æ™‚åŸ·è¡Œåˆå§‹åŒ–
         document.addEventListener('DOMContentLoaded', updateUI);
 
-        // µù¥U Service Worker
+        // è¨»å†Š Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                // ¨Ï¥Î¬Û¹ï¸ô®| './' ½T«OÂsÄı¾¹¯à¦b¦P¤@¥Ø¿ı¤U§ä¨ì service-worker.js
-                navigator.serviceWorker.register('./service-worker.js')
+                // ä½¿ç”¨çµ•å°è·¯å¾‘ '/' ç¢ºä¿ç€è¦½å™¨èƒ½å¾æ ¹ç›®éŒ„æ‰¾åˆ° service-worker.js
+                // é€™å°æ–¼ GitHub Pages é€™é¡åœ¨å­è·¯å¾‘ä¸Šæ‰˜ç®¡çš„ç¶²ç«™å¾ˆé‡è¦
+                navigator.serviceWorker.register('/service-worker.js')
                     .then(registration => {
                         console.log('Service Worker registered with scope:', registration.scope);
                     })
