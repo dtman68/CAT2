@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的黃貓寵物</title>
+    <!-- 註冊 manifest.json 檔案，用於 PWA 功能 -->
+    <link rel="manifest" href="manifest.json">
+    <!-- 載入 Tailwind CSS 框架，用於快速建立美觀的介面 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 載入 Inter 字體以獲得更好的排版效果 */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-yellow-50 min-h-screen flex items-center justify-center p-4">
+    <!-- 應用程式主容器 -->
+    <div class="bg-white rounded-3xl shadow-xl p-8 max-w-sm w-full border-4 border-yellow-300 transform transition-transform duration-300 hover:scale-105">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-4">我的黃貓寵物</h1>
+        
+        <!-- 貓咪顯示區 -->
+        <div id="catDisplay" class="text-9xl text-center my-6 transition-all duration-500">
+            ??
+        </div>
+        
+        <!-- 狀態訊息顯示區 -->
+        <div id="statusMessage" class="text-center text-gray-600 mb-6 h-6 font-medium">
+            這是一隻快樂的黃貓！
+        </div>
+
+        <!-- 貓咪屬性狀態條 -->
+        <div class="space-y-4">
+            <!-- 飽足度 -->
+            <div>
+                <div class="flex justify-between items-center text-sm font-semibold text-gray-700">
+                    <span>飽足度</span>
+                    <span id="fullnessText">100%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div id="fullnessBar" class="bg-yellow-500 h-2.5 rounded-full transition-all duration-300" style="width: 100%;"></div>
+                </div>
+            </div>
+
+            <!-- 快樂度 -->
+            <div>
+                <div class="flex justify-between items-center text-sm font-semibold text-gray-700">
+                    <span>快樂度</span>
+                    <span id="happinessText">100%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div id="happinessBar" class="bg-yellow-500 h-2.5 rounded-full transition-all duration-300" style="width: 100%;"></div>
+                </div>
+            </div>
+
+            <!-- 休息度 -->
+            <div>
+                <div class="flex justify-between items-center text-sm font-semibold text-gray-700">
+                    <span>休息度</span>
+                    <span id="restfulnessText">100%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div id="restfulnessBar" class="bg-yellow-500 h-2.5 rounded-full transition-all duration-300" style="width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 互動按鈕區 -->
+        <div class="grid grid-cols-2 gap-4 mt-8">
+            <button id="feedBtn" class="bg-green-500 text-white py-2 px-4 rounded-full text-lg font-bold shadow-md hover:bg-green-600 transform hover:scale-105 transition-all duration-200">
+                餵食
+            </button>
+            <button id="playBtn" class="bg-blue-500 text-white py-2 px-4 rounded-full text-lg font-bold shadow-md hover:bg-blue-600 transform hover:scale-105 transition-all duration-200">
+                玩耍
+            </button>
+            <button id="sleepBtn" class="bg-purple-500 text-white py-2 px-4 rounded-full text-lg font-bold shadow-md hover:bg-purple-600 transform hover:scale-105 transition-all duration-200">
+                休息
+            </button>
+            <button id="groomBtn" class="bg-pink-500 text-white py-2 px-4 rounded-full text-lg font-bold shadow-md hover:bg-pink-600 transform hover:scale-105 transition-all duration-200">
+                刷毛
+            </button>
+            <button id="trainBtn" class="bg-orange-500 text-white py-2 px-4 rounded-full text-lg font-bold shadow-md hover:bg-orange-600 transform hover:scale-105 transition-all duration-200">
+                訓練
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // 取得所有 HTML 元素參考
+        const catDisplay = document.getElementById('catDisplay');
+        const statusMessage = document.getElementById('statusMessage');
+        const fullnessBar = document.getElementById('fullnessBar');
+        const happinessBar = document.getElementById('happinessBar');
+        const restfulnessBar = document.getElementById('restfulnessBar');
+        const fullnessText = document.getElementById('fullnessText');
+        const happinessText = document.getElementById('happinessText');
+        const restfulnessText = document.getElementById('restfulnessText');
+        const feedBtn = document.getElementById('feedBtn');
+        const playBtn = document.getElementById('playBtn');
+        const sleepBtn = document.getElementById('sleepBtn');
+        const groomBtn = document.getElementById('groomBtn');
+        const trainBtn = document.getElementById('trainBtn');
+
+        // 貓咪的初始屬性值
+        let stats = {
+            fullness: 100,
+            happiness: 100,
+            restfulness: 100,
+        };
+
+        // 根據屬性值更新 UI 介面
+        function updateUI() {
+            // 確保屬性值介於 0 到 100 之間
+            for (let key in stats) {
+                if (stats[key] > 100) stats[key] = 100;
+                if (stats[key] < 0) stats[key] = 0;
+            }
+
+            // 更新屬性條的寬度和文字顯示
+            fullnessBar.style.width = stats.fullness + '%';
+            happinessBar.style.width = stats.happiness + '%';
+            restfulnessBar.style.width = stats.restfulness + '%';
+
+            fullnessText.textContent = stats.fullness + '%';
+            happinessText.textContent = stats.happiness + '%';
+            restfulnessText.textContent = stats.restfulness + '%';
+
+            // 根據屬性值改變狀態條的顏色
+            fullnessBar.className = `h-2.5 rounded-full transition-all duration-300 ${stats.fullness > 50 ? 'bg-green-500' : stats.fullness > 20 ? 'bg-orange-500' : 'bg-red-500'}`;
+            happinessBar.className = `h-2.5 rounded-full transition-all duration-300 ${stats.happiness > 50 ? 'bg-blue-500' : stats.happiness > 20 ? 'bg-orange-500' : 'bg-red-500'}`;
+            restfulnessBar.className = `h-2.5 rounded-full transition-all duration-300 ${stats.restfulness > 50 ? 'bg-purple-500' : stats.restfulness > 20 ? 'bg-orange-500' : 'bg-red-500'}`;
+
+            // 根據屬性值更新貓咪的表情和狀態訊息
+            if (stats.restfulness < 20) {
+                catDisplay.textContent = '??';
+                statusMessage.textContent = '貓咪累了，需要休息。';
+            } else if (stats.fullness < 20) {
+                catDisplay.textContent = '??';
+                statusMessage.textContent = '貓咪餓了，快餵牠！';
+            } else if (stats.happiness < 20) {
+                catDisplay.textContent = '??';
+                statusMessage.textContent = '貓咪不開心，需要玩耍。';
+            } else if (stats.happiness > 80 && stats.fullness > 80) {
+                catDisplay.textContent = '??';
+                statusMessage.textContent = '貓咪非常滿足，很高興！';
+            } else {
+                catDisplay.textContent = '??';
+                statusMessage.textContent = '這是一隻普通的黃貓。';
+            }
+        }
+
+        // 定時減少貓咪的屬性值
+        function decreaseStats() {
+            stats.fullness -= 1;
+            stats.happiness -= 1;
+            stats.restfulness -= 1;
+            updateUI();
+        }
+
+        // 餵食按鈕事件
+        feedBtn.addEventListener('click', () => {
+            stats.fullness += 20;
+            stats.happiness += 5;
+            updateUI();
+            statusMessage.textContent = '你餵了貓咪，牠看起來飽足了！';
+        });
+
+        // 玩耍按鈕事件
+        playBtn.addEventListener('click', () => {
+            stats.happiness += 20;
+            stats.restfulness -= 10;
+            stats.fullness -= 5;
+            updateUI();
+            statusMessage.textContent = '你和貓咪玩耍，牠很高興！';
+        });
+
+        // 休息按鈕事件
+        sleepBtn.addEventListener('click', () => {
+            stats.restfulness += 30;
+            stats.happiness -= 10;
+            updateUI();
+            statusMessage.textContent = '貓咪睡覺了，牠將會很放鬆。';
+        });
+
+        // 刷毛按鈕事件
+        groomBtn.addEventListener('click', () => {
+            stats.happiness += 15;
+            stats.restfulness += 5;
+            updateUI();
+            statusMessage.textContent = '你替貓咪刷毛，牠舒服地發出呼嚕聲。';
+        });
+
+        // 訓練按鈕事件
+        trainBtn.addEventListener('click', () => {
+            stats.happiness += 10;
+            stats.restfulness -= 15;
+            stats.fullness -= 5;
+            updateUI();
+            statusMessage.textContent = '你和貓咪一起訓練，牠學會了一個新把戲！';
+        });
+
+        // 每 2 秒自動減少屬性值
+        setInterval(decreaseStats, 2000);
+
+        // 應用程式載入時執行初始化
+        document.addEventListener('DOMContentLoaded', updateUI);
+
+        // 註冊 Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
