@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的黃貓寵物</title>
+    <!-- 設置 <base> 標籤，確保所有相對路徑都能正確解析 -->
+    <base href="./">
     <!-- 註冊 manifest.json 檔案，用於 PWA 功能 -->
     <link rel="manifest" href="manifest.json">
     <!-- 載入 Tailwind CSS 框架，用於快速建立美觀的介面 -->
@@ -137,7 +139,7 @@
                 catDisplay.textContent = '??';
                 statusMessage.textContent = '貓咪累了，需要休息。';
             } else if (stats.fullness < 20) {
-                catDisplay.textContent = '??';
+                catDisplay.textContent = '?';
                 statusMessage.textContent = '貓咪餓了，快餵牠！';
             } else if (stats.happiness < 20) {
                 catDisplay.textContent = '??';
